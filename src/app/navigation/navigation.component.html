@@ -1,9 +1,16 @@
 <nav class="navbar">
     <ul class="navbar-nav">
-        <li class="nav-item">
+        <li class="nav-item file-dropdown">
             <label for="fileSelect">Select File </label>
-            <select id="fileSelect" class="file-select">
-                <option value="csv">csv</option>
+            <select
+                id="fileSelect"
+                #fileSelect
+                class="file-select"
+                (change)="onChange(fileSelect.value)"
+            >
+                <option class="select-option" *ngFor="let option of options">
+                    {{ option }}
+                </option>
             </select>
         </li>
         <li class="nav-item">
