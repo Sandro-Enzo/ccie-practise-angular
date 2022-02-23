@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import convert from '../csvToJson';
 
 @Component({
     selector: 'app-navigation',
@@ -6,13 +7,15 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
-    currentFile: string = 'filename.csv';
-
-    options: string[] = ['file1', 'file2', 'file3'];
+    @Input() renderSettings: boolean = false;
+    @Output() renderSettingsChange = new EventEmitter<boolean>();
 
     constructor() {}
 
     ngOnInit(): void {}
 
-    onChange(selectedFile: string): void {}
+    toggleSettings() {
+        this.renderSettings = !this.renderSettings;
+        this.renderSettingsChange.emit(this.renderSettings);
+    }
 }

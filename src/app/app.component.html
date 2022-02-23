@@ -1,6 +1,7 @@
 <header>
-    <app-navigation></app-navigation>
+    <app-navigation [(renderSettings)]="renderSettings"></app-navigation>
 </header>
 <main>
-    <router-outlet></router-outlet>
+    <app-question [file]="data" *ngIf="!renderSettings"></app-question>
+    <app-settings *ngIf="renderSettings"></app-settings>
 </main>

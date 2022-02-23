@@ -1,13 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SettingsComponent } from './settings/settings.component';
 
-const routes: Routes = [
-    {
-        path: 'settings',
-        component: SettingsComponent,
-    },
-];
+const routes: Routes = [];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

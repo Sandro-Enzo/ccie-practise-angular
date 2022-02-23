@@ -19,6 +19,9 @@
 
 .nav-item {
     flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .file-dropdown {
@@ -45,4 +48,19 @@
 
 .select-option {
     color: black;
+}
+
+.add-file {
+    background-color: transparent;
+    color: var(--text-color);
+    border: none;
+    font-size: 3rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    // Otherwise not centered for some reason
+    padding-bottom: 5px;
+}
+
+.add-file-input {
+    display: none;
 }

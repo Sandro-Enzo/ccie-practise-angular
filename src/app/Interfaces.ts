@@ -1,4 +1,11 @@
-export interface IRoot {
+export interface IData {
+    files: IFile[];
+    currentFile: number;
+}
+
+export interface IFile {
+    name: string;
+    currentQuestion: number;
     questions: IQuestion[];
 }
 

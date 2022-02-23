@@ -1,4 +1,3 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,11 +6,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements OnInit {
-    constructor(private location: Location) {}
+    constructor() {}
 
     ngOnInit(): void {}
-
-    goBack(): void {
-        this.location.back();
-    }
 }
