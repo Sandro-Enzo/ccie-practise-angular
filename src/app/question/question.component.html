@@ -19,10 +19,23 @@
             </div>
             <div
                 class="answer-rows"
-                *ngFor="let row of file.questions[file.currentQuestion].answers"
+                *ngFor="
+                    let row of file.questions[file.currentQuestion].answers;
+                    let i = index
+                "
             >
-                <div class="answer-columns" *ngFor="let column of row">
-                    {{ column }}
+                <div
+                    class="answer-columns"
+                    *ngFor="let column of row; let j = index"
+                >
+                    <div *ngIf="file.currentQuestionInputOrDiv[i][j]">
+                        {{ column }}
+                    </div>
+                    <input
+                        [(ngModel)]="file.input[i][j]"
+                        *ngIf="!file.currentQuestionInputOrDiv[i][j]"
+                        class="input"
+                    />
                 </div>
             </div>
         </div>

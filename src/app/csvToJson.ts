@@ -8,7 +8,13 @@ export default function convert(csv: string, title: string): IFile {
     questions = questions.slice(1, questions.length);
 
     // Initialize output
-    let output: IFile = { name: title, currentQuestion: 0, questions: [] };
+    let output: IFile = {
+        name: title,
+        currentQuestion: 0,
+        questions: [],
+        currentQuestionInputOrDiv: [],
+        input: [],
+    };
 
     for (const question of questions) {
         // If the line is empty, continue

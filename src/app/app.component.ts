@@ -9,6 +9,4 @@ import { obj } from './mock-json';
 })
 export class AppComponent {
     data: IFile = obj;
-
-    renderSettings = false;
 }

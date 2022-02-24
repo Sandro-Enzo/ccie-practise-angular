@@ -7,6 +7,8 @@ export interface IFile {
     name: string;
     currentQuestion: number;
     questions: IQuestion[];
+    currentQuestionInputOrDiv: number[][];
+    input: string[][];
 }
 
 export interface IQuestion {

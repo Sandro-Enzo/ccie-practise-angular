@@ -7,7 +7,13 @@ import { IFile } from '../Interfaces';
     styleUrls: ['./question.component.scss'],
 })
 export class QuestionComponent implements OnInit {
-    @Input() file: IFile = { name: '', currentQuestion: 0, questions: [] };
+    @Input() file: IFile = {
+        name: '',
+        currentQuestion: 0,
+        questions: [],
+        currentQuestionInputOrDiv: [],
+        input: [],
+    };
 
     constructor() {}
 
