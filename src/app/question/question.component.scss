@@ -1,0 +1,26 @@
+.container {
+    --columns: 4;
+}
+
+.question {
+    padding: 2rem 4rem;
+}
+
+.answer-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+}
+
+.answer-rows {
+    grid-column: span 4;
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+}
+
+.format {
+    grid-column: span 4;
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    position: relative;
+    margin: 2rem 0;
+}

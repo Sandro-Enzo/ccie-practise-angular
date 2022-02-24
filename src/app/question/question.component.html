@@ -5,18 +5,18 @@
             <h1>{{ file.questions[file.currentQuestion].meta.type }}</h1>
             <h1>{{ file.questions[file.currentQuestion].meta.instruction }}</h1>
         </div>
-        <div class="format">
-            <div
-                class="format-item"
-                *ngFor="
-                    let formatItem of file.questions[file.currentQuestion]
-                        .format
-                "
-            >
-                {{ formatItem }}
+        <div class="answer-grid">
+            <div class="format">
+                <div
+                    class="format-item"
+                    *ngFor="
+                        let formatItem of file.questions[file.currentQuestion]
+                            .format
+                    "
+                >
+                    {{ formatItem }}
+                </div>
             </div>
-        </div>
-        <div class="answers">
             <div
                 class="answer-rows"
                 *ngFor="let row of file.questions[file.currentQuestion].answers"
