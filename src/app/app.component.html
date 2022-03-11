@@ -2,5 +2,5 @@
     <app-navigation></app-navigation>
 </header>
 <main>
-    <app-question [file]="data"></app-question>
+    <app-question [file]="data" (submitEvent)="submit($event)"></app-question>
 </main>

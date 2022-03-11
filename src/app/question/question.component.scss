@@ -28,3 +28,16 @@
 .input {
     color: black;
 }
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2rem;
+
+    button {
+        color: black;
+        font-size: 3rem;
+        min-width: 12rem;
+    }
+}

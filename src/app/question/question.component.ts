@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IFile } from '../Interfaces';
 
 @Component({
@@ -15,7 +15,13 @@ export class QuestionComponent implements OnInit {
         input: [],
     };
 
+    @Output() submitEvent = new EventEmitter<MouseEvent>();
+
     constructor() {}
 
     ngOnInit(): void {}
+
+    submit(event: MouseEvent): void {
+        this.submitEvent.emit(event);
+    }
 }
