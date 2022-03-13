@@ -16,7 +16,51 @@ export class AppComponent implements OnInit {
         this.nextQuestion();
     }
 
+    areEqual2d(arr1: string[][], arr2: string[][]): boolean {
+        console.log(arr1);
+        console.log(arr2);
+
+        let output = true;
+
+        arr1.forEach((value, i) => {
+            value.forEach((string, j) => {
+                if (string !== arr2[i][j]) {
+                    output = false;
+                }
+            });
+        });
+
+        return output;
+    }
+
     submit(event: MouseEvent): void {
+        const inputs: string[][] = [];
+        const correctInputs: string[][] = [];
+
+        this.data.input.forEach((row, i) => {
+            inputs.push([]);
+            row.forEach((column, j) => {
+                if (
+                    column !== '' &&
+                    this.data.currentQuestionInputOrDiv[i][j] === 0
+                ) {
+                    inputs[i].push(column);
+                }
+            });
+        });
+
+        this.data.questions[this.data.currentQuestion].answers.forEach(
+            (row, i) => {
+                correctInputs.push([]);
+                row.forEach((column, j) => {
+                    if (this.data.currentQuestionInputOrDiv[i][j] === 0)
+                        correctInputs[i].push(column);
+                });
+            }
+        );
+
+        if (!this.areEqual2d(inputs, correctInputs)) return;
+
         this.data.currentQuestion =
             (this.data.currentQuestion + 1) % this.data.questions.length;
         this.nextQuestion();
