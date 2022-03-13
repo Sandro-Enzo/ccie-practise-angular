@@ -9,6 +9,7 @@ export interface IFile {
     questions: IQuestion[];
     currentQuestionInputOrDiv: number[][];
     input: string[][];
+    currentQuestionColours: number[][];
 }
 
 export interface IQuestion {

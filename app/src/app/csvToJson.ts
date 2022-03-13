@@ -14,6 +14,7 @@ export default function convert(csv: string, title: string): IFile {
         questions: [],
         currentQuestionInputOrDiv: [],
         input: [],
+        currentQuestionColours: [],
     };
 
     for (const question of questions) {

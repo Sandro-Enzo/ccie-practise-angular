@@ -24,6 +24,7 @@ export class QuestionComponent implements OnInit, AfterViewInit {
         questions: [],
         currentQuestionInputOrDiv: [],
         input: [],
+        currentQuestionColours: [],
     };
 
     @ViewChild('container') container!: ElementRef<HTMLDivElement>;

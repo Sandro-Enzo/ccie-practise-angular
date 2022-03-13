@@ -15,12 +15,17 @@ export class AppComponent implements OnInit {
     }
 
     areEqual2d(arr1: string[][], arr2: string[][]): boolean {
-        console.log(arr1);
-        console.log(arr2);
+        let output = false;
 
-        let output = true;
+        console.dir(arr1);
+        console.dir(arr2);
+
+        arr1.forEach((value) => {
+            if (value.length > 0) output = true;
+        });
 
         arr1.forEach((value, i) => {
+            if (value.length === 0) output = false;
             value.forEach((string, j) => {
                 if (string !== arr2[i][j]) {
                     output = false;
@@ -66,11 +71,11 @@ export class AppComponent implements OnInit {
 
     checkFull(): boolean {
         let output = true;
-        this.data.currentQuestionInputOrDiv.forEach((value) => {
-            value.forEach((num) => {
-                if (num === 0) {
+
+        this.data.currentQuestionInputOrDiv.forEach((row, i) => {
+            row.forEach((column, j) => {
+                if (column === 0 && this.data.input[i][j] === '')
                     output = false;
-                }
             });
         });
 
@@ -93,9 +98,13 @@ export class AppComponent implements OnInit {
             randcol = Math.floor(
                 Math.random() * this.data.currentQuestionInputOrDiv[0].length
             );
-        } while (this.data.currentQuestionInputOrDiv[randrow][randcol] !== 0);
+        } while (
+            this.data.currentQuestionInputOrDiv[randrow][randcol] !== 0 ||
+            this.data.input[randrow][randcol] !== ''
+        );
 
         this.data.currentQuestionInputOrDiv[randrow][randcol] = 1;
+        this.data.currentQuestionColours[randrow][randcol] = 1;
     }
 
     nextQuestion() {
@@ -117,6 +126,7 @@ export class AppComponent implements OnInit {
             i++
         ) {
             this.data.currentQuestionInputOrDiv.push([]);
+            this.data.currentQuestionColours.push([]);
 
             const rowLength =
                 this.data.questions[this.data.currentQuestion].answers[0]
@@ -124,6 +134,9 @@ export class AppComponent implements OnInit {
 
             this.data.currentQuestionInputOrDiv[i].length = rowLength;
             this.data.currentQuestionInputOrDiv[i].fill(1);
+
+            this.data.currentQuestionColours[i].length = rowLength;
+            this.data.currentQuestionColours[i].fill(0);
 
             this.data.input.push([]);
 

@@ -33,6 +33,7 @@ export const obj: IFile = {
         ['', '', '', ''],
         ['', '', '', ''],
     ],
+    currentQuestionColours: [],
 };
 
 export const obj2: IFile = {
@@ -488,6 +489,7 @@ export const obj2: IFile = {
     ],
     currentQuestionInputOrDiv: [],
     input: [],
+    currentQuestionColours: [],
 };
 
 // export const obj2: IFile = {
