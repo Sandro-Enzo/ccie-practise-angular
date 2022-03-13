@@ -13,6 +13,61 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         console.log(`NGONINIT IN APPCOMPONENT`);
 
+        this.nextQuestion();
+    }
+
+    submit(event: MouseEvent): void {
+        this.data.currentQuestion =
+            (this.data.currentQuestion + 1) % this.data.questions.length;
+        this.nextQuestion();
+    }
+
+    checkFull(): boolean {
+        let output = true;
+        this.data.currentQuestionInputOrDiv.forEach((value) => {
+            value.forEach((num) => {
+                if (num === 0) {
+                    output = false;
+                }
+            });
+        });
+
+        return output;
+    }
+
+    hint(event: MouseEvent): void {
+        if (this.checkFull()) {
+            console.log('FULL');
+            return;
+        }
+
+        let randrow;
+        let randcol;
+
+        do {
+            randrow = Math.floor(
+                Math.random() * this.data.currentQuestionInputOrDiv.length
+            );
+            randcol = Math.floor(
+                Math.random() * this.data.currentQuestionInputOrDiv[0].length
+            );
+        } while (this.data.currentQuestionInputOrDiv[randrow][randcol] !== 0);
+
+        this.data.currentQuestionInputOrDiv[randrow][randcol] = 1;
+    }
+
+    nextQuestion() {
+        this.resetCurrentQuestion();
+
+        this.populateCurrentQuestion();
+    }
+
+    resetCurrentQuestion(): void {
+        this.data.input = [];
+        this.data.currentQuestionInputOrDiv = [];
+    }
+
+    populateCurrentQuestion(): void {
         // Randomly remove one div from each row and replace it with an input
         for (
             let i = 0;
@@ -41,11 +96,5 @@ export class AppComponent implements OnInit {
 
             this.data.currentQuestionInputOrDiv[i][randnum] = 0;
         }
-    }
-
-    submit(event: MouseEvent) {
-        this.data.currentQuestion =
-            (this.data.currentQuestion + 1) % this.data.questions.length;
-        this.ngOnInit();
     }
 }

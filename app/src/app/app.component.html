@@ -2,5 +2,9 @@
     <app-navigation></app-navigation>
 </header>
 <main>
-    <app-question [file]="data" (submitEvent)="submit($event)"></app-question>
+    <app-question
+        [file]="data"
+        (submitEvent)="submit($event)"
+        (hintEvent)="hint($event)"
+    ></app-question>
 </main>
