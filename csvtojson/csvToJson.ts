@@ -1,4 +1,4 @@
-import { IFile } from '../ccie-practice-angular/src/app/Interfaces';
+import { IFile } from '../app/src/app/Interfaces';
 
 export default function convert(csv: string, title: string): IFile {
     // Every line in the csv is a question
