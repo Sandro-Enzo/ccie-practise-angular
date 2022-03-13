@@ -16,6 +16,7 @@ export class QuestionComponent implements OnInit {
     };
 
     @Output() submitEvent = new EventEmitter<MouseEvent>();
+    @Output() hintEvent = new EventEmitter<MouseEvent>();
 
     constructor() {}
 
@@ -23,5 +24,9 @@ export class QuestionComponent implements OnInit {
 
     submit(event: MouseEvent): void {
         this.submitEvent.emit(event);
+    }
+
+    hint(event: MouseEvent): void {
+        this.hintEvent.emit(event);
     }
 }
