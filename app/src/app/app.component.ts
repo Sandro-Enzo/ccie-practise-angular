@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IFile } from './Interfaces';
-import { obj } from './mock-json';
+import { obj2 } from './mock-json';
 
 @Component({
     selector: 'app-root',
@@ -8,7 +8,7 @@ import { obj } from './mock-json';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-    data: IFile = obj;
+    data: IFile = obj2;
 
     ngOnInit(): void {
         console.log(`NGONINIT IN APPCOMPONENT`);
@@ -27,6 +27,15 @@ export class AppComponent implements OnInit {
 
             this.data.currentQuestionInputOrDiv[i].length = rowLength;
             this.data.currentQuestionInputOrDiv[i].fill(1);
+
+            this.data.input.push([]);
+
+            this.data.input[i].push();
+            this.data.input[i].length =
+                this.data.questions[
+                    this.data.currentQuestion
+                ].answers[0].length;
+            this.data.input[i].fill('');
 
             const randnum = Math.floor(Math.random() * rowLength);
 
