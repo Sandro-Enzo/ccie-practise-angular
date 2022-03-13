@@ -11,8 +11,6 @@ export class AppComponent implements OnInit {
     data: IFile = obj2;
 
     ngOnInit(): void {
-        console.log(`NGONINIT IN APPCOMPONENT`);
-
         this.nextQuestion();
     }
 

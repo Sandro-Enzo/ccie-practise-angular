@@ -17,7 +17,7 @@ import { IFile } from '../Interfaces';
     templateUrl: './question.component.html',
     styleUrls: ['./question.component.scss'],
 })
-export class QuestionComponent implements OnInit, AfterViewInit, OnChanges {
+export class QuestionComponent implements OnInit, AfterViewInit {
     @Input() file: IFile = {
         name: '',
         currentQuestion: 0,
@@ -34,10 +34,6 @@ export class QuestionComponent implements OnInit, AfterViewInit, OnChanges {
     constructor() {}
 
     ngOnInit(): void {}
-
-    ngOnChanges(changes: SimpleChanges): void {
-        console.log(changes);
-    }
 
     ngAfterViewInit(): void {
         this.container.nativeElement.style.setProperty(
