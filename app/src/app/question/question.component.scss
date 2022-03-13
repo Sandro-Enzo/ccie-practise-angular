@@ -12,21 +12,53 @@
 }
 
 .answer-rows {
-    grid-column: span 4;
+    grid-column: span var(--columns);
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
+    font-size: 1.5rem;
+}
+.answer-columns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .format {
-    grid-column: span 4;
+    grid-column: span var(--columns);
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
     position: relative;
     margin: 2rem 0;
+
+    .format-item {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+    }
+}
+
+.div {
+    padding: 0.5em;
+    margin: 0.25em 0;
+    font-size: 1.5rem;
 }
 
 .input {
-    color: black;
+    color: white;
+    background-color: #dddddd99;
+    border: none;
+    border-radius: 0.25em;
+    padding: 0.5em;
+    margin: 0.25em 0;
+    font-size: 1.5rem;
+    width: 10rem;
+
+    &:focus-visible {
+        outline: none;
+    }
 }
 
 .buttons {

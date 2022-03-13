@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" #container>
     <div class="question">
         <div class="meta">
             <h1>{{ file.questions[file.currentQuestion].meta.title }}</h1>
@@ -28,7 +28,10 @@
                     class="answer-columns"
                     *ngFor="let column of row; let j = index"
                 >
-                    <div *ngIf="file.currentQuestionInputOrDiv[i][j]">
+                    <div
+                        *ngIf="file.currentQuestionInputOrDiv[i][j]"
+                        class="div"
+                    >
                         {{ column }}
                     </div>
                     <input

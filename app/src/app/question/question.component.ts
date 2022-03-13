@@ -1,4 +1,15 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+    SimpleChanges,
+    ViewChild,
+} from '@angular/core';
 import { IFile } from '../Interfaces';
 
 @Component({
@@ -6,7 +17,7 @@ import { IFile } from '../Interfaces';
     templateUrl: './question.component.html',
     styleUrls: ['./question.component.scss'],
 })
-export class QuestionComponent implements OnInit {
+export class QuestionComponent implements OnInit, AfterViewInit, OnChanges {
     @Input() file: IFile = {
         name: '',
         currentQuestion: 0,
@@ -15,6 +26,8 @@ export class QuestionComponent implements OnInit {
         input: [],
     };
 
+    @ViewChild('container') container!: ElementRef<HTMLDivElement>;
+
     @Output() submitEvent = new EventEmitter<MouseEvent>();
     @Output() hintEvent = new EventEmitter<MouseEvent>();
 
@@ -22,8 +35,22 @@ export class QuestionComponent implements OnInit {
 
     ngOnInit(): void {}
 
+    ngOnChanges(changes: SimpleChanges): void {
+        console.log(changes);
+    }
+
+    ngAfterViewInit(): void {
+        this.container.nativeElement.style.setProperty(
+            '--columns',
+            this.file.questions[
+                this.file.currentQuestion
+            ].answers[0].length.toString()
+        );
+    }
+
     submit(event: MouseEvent): void {
         this.submitEvent.emit(event);
+        this.ngAfterViewInit();
     }
 
     hint(event: MouseEvent): void {
