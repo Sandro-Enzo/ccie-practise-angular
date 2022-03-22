@@ -17,9 +17,6 @@ export class AppComponent implements OnInit {
     areEqual2d(arr1: string[][], arr2: string[][]): boolean {
         let output = false;
 
-        console.dir(arr1);
-        console.dir(arr2);
-
         arr1.forEach((value) => {
             if (value.length > 0) output = true;
         });
@@ -34,6 +31,27 @@ export class AppComponent implements OnInit {
         });
 
         return output;
+    }
+
+    areEqual2d2(arr1: string[][], arr2: string[][]): boolean {
+        let tempArr1: string[] = [];
+        let tempArr2: string[] = [];
+
+        arr1.forEach((stringArr) => {
+            if (stringArr.length === 0) tempArr1.push('');
+            else stringArr.forEach((value) => tempArr1.push(value));
+        });
+
+        arr2.forEach((stringArr) => {
+            if (stringArr.length === 0) tempArr2.push('');
+            else stringArr.forEach((value) => tempArr2.push(value));
+        });
+
+        for (let i = 0; i < tempArr1.length; i++) {
+            if (!(tempArr1[i] === tempArr2[i])) return false;
+        }
+
+        return true;
     }
 
     submit(event: MouseEvent): void {
@@ -62,7 +80,7 @@ export class AppComponent implements OnInit {
             }
         );
 
-        if (!this.areEqual2d(inputs, correctInputs)) return;
+        if (!this.areEqual2d2(inputs, correctInputs)) return;
 
         this.data.currentQuestion =
             (this.data.currentQuestion + 1) % this.data.questions.length;
