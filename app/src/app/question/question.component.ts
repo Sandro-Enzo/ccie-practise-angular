@@ -31,6 +31,7 @@ export class QuestionComponent implements OnInit, AfterViewInit {
 
     @Output() submitEvent = new EventEmitter<MouseEvent>();
     @Output() hintEvent = new EventEmitter<MouseEvent>();
+    @Output() nextEvent = new EventEmitter<MouseEvent>();
 
     constructor() {}
 
@@ -52,5 +53,10 @@ export class QuestionComponent implements OnInit, AfterViewInit {
 
     hint(event: MouseEvent): void {
         this.hintEvent.emit(event);
+    }
+
+    next(): void {
+        this.nextEvent.emit();
+        this.ngAfterViewInit();
     }
 }

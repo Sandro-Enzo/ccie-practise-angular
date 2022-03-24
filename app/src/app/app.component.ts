@@ -10,7 +10,24 @@ import { obj2 } from './mock-json';
 export class AppComponent implements OnInit {
     data: IFile = obj2;
 
+    shuffleArray<T>(array: T[]) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    randomizeQuestionOrder() {
+        this.shuffleArray(this.data.questions);
+
+        console.dir(this.data.questions);
+    }
+
     ngOnInit(): void {
+        this.randomizeQuestionOrder();
+
+        // nextQuestion method ups the currentQuestion by one, but we want to start at index 0, so we set it to -1 here
+        this.data.currentQuestion = -1;
         this.nextQuestion();
     }
 
@@ -82,8 +99,6 @@ export class AppComponent implements OnInit {
 
         if (!this.areEqual2d2(inputs, correctInputs)) return;
 
-        this.data.currentQuestion =
-            (this.data.currentQuestion + 1) % this.data.questions.length;
         this.nextQuestion();
     }
 
@@ -125,7 +140,14 @@ export class AppComponent implements OnInit {
         this.data.currentQuestionColours[randrow][randcol] = 1;
     }
 
+    next(): void {
+        this.nextQuestion();
+    }
+
     nextQuestion() {
+        this.data.currentQuestion =
+            (this.data.currentQuestion + 1) % this.data.questions.length;
+
         this.resetCurrentQuestion();
 
         this.populateCurrentQuestion();
