@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileService } from './file.service';
 import { IFile } from './Interfaces';
 import { obj2 } from './mock-json';
 
@@ -8,7 +9,29 @@ import { obj2 } from './mock-json';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-    data: IFile = obj2;
+    data: IFile = {
+        currentQuestion: 0,
+        currentQuestionColours: [],
+        currentQuestionInputOrDiv: [],
+        input: [],
+        name: '',
+        questions: [],
+    };
+
+    constructor(private fileService: FileService) {
+        fileService.getFile().subscribe((value) => {
+            this.data = value;
+        });
+
+        // this.data = fileService.getFile();
+    }
+
+    updateFiles() {
+        this.fileService.getFile().subscribe((value) => {
+            this.data = value;
+            this.ngOnInit();
+        });
+    }
 
     shuffleArray<T>(array: T[]) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -19,8 +42,6 @@ export class AppComponent implements OnInit {
 
     randomizeQuestionOrder() {
         this.shuffleArray(this.data.questions);
-
-        console.dir(this.data.questions);
     }
 
     ngOnInit(): void {
