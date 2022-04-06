@@ -38,13 +38,12 @@ export class QuestionComponent implements OnInit, AfterViewInit {
     ngOnInit(): void {}
 
     ngAfterViewInit(): void {
-        this.container &&
-            this.container.nativeElement.style.setProperty(
-                '--columns',
-                this.file.questions[
-                    this.file.currentQuestion
-                ].answers[0].length.toString()
-            );
+        this.container.nativeElement.style.setProperty(
+            '--columns',
+            this.file.questions[
+                this.file.currentQuestion
+            ].answers[0].length.toString()
+        );
     }
 
     submit(event: MouseEvent): void {
