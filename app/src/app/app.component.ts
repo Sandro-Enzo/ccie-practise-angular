@@ -19,10 +19,6 @@ export class AppComponent implements OnInit {
     };
 
     constructor(private fileService: FileService) {
-        fileService.getFile().subscribe((value) => {
-            this.data = value;
-        });
-
         // this.data = fileService.getFile();
     }
 
@@ -45,11 +41,17 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.randomizeQuestionOrder();
+        this.fileService.getFile().subscribe((value) => {
+            this.data = value;
 
-        // nextQuestion method ups the currentQuestion by one, but we want to start at index 0, so we set it to -1 here
-        this.data.currentQuestion = -1;
-        this.nextQuestion();
+            if (this.data == undefined) return;
+
+            this.randomizeQuestionOrder();
+
+            // nextQuestion method ups the currentQuestion by one, but we want to start at index 0, so we set it to -1 here
+            this.data.currentQuestion = -1;
+            this.nextQuestion();
+        });
     }
 
     areEqual2d(arr1: string[][], arr2: string[][]): boolean {

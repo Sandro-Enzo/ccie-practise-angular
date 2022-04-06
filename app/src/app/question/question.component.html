@@ -1,4 +1,4 @@
-<div class="container" #container>
+<div class="container" #container *ngIf="file != undefined">
     <div class="question">
         <div class="meta">
             <h1>{{ file.questions[file.currentQuestion].meta.title }}</h1>
