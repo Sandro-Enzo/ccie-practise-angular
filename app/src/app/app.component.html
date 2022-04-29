@@ -1,5 +1,8 @@
 <header>
-    <app-navigation (updateFiles)="updateFiles()"></app-navigation>
+    <app-navigation
+        (updateFiles)="updateFiles()"
+        (selectNewFile)="selectNewFile($event)"
+    ></app-navigation>
 </header>
 <main>
     <app-question

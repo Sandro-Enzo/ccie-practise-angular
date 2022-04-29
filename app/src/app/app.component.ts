@@ -29,6 +29,15 @@ export class AppComponent implements OnInit {
         });
     }
 
+    selectNewFile(fileName: string) {
+        this.fileService.selectFile(fileName);
+
+        this.fileService.getFile().subscribe((value) => {
+            this.data = value;
+            this.ngOnInit();
+        });
+    }
+
     shuffleArray<T>(array: T[]) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));

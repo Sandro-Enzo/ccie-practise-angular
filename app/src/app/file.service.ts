@@ -31,4 +31,20 @@ export class FileService {
 
         return output;
     }
+
+    selectFile(name: string) {
+        this.data.files.forEach((value, index) => {
+            console.log(value.name.trim());
+
+            if (value.name.trim() === name.trim()) {
+                console.log(
+                    `INSIDE IF WITH ${value.name.trim()} AND ${name.trim()}`
+                );
+
+                this.data.currentFile = index;
+                return;
+            }
+        });
+        console.log(`COULDNT SELECT FILE ${name.trim()}`);
+    }
 }
